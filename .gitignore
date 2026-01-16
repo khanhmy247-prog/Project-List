@@ -1,0 +1,17 @@
+# IDE files
+.vscode/
+.idea/
+
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project specific
+docs/instructions.md
+# screen.png (optional: if you don't want to push screenshots)

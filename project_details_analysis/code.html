@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Details Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#66ccb2",
+              "background-light": "#f8fafc", // Slightly off-white for depth
+              "background-dark": "#1a1e23",
+              "card-light": "#ffffff",
+              "card-dark": "#242930",
+              "text-main": "#121615",
+              "text-muted": "#6a817b",
+              "pastel-lavender": "#C9B2E3",
+              "pastel-blue": "#99CCF2",
+              "pastel-pink": "#F2C6DE",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .dark .glass-card {
+            background: rgba(36, 41, 48, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 hidden md:flex flex-col border-r border-gray-200 dark:border-gray-800 bg-card-light dark:bg-card-dark h-full z-10 shadow-sm">
+<div class="p-6 flex items-center gap-3">
+<div class="h-8 w-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">P</div>
+<span class="font-bold text-lg tracking-tight">Projectify</span>
+</div>
+<nav class="flex-1 px-4 py-4 flex flex-col gap-2 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary dark:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined fill-1">folder_open</span>
+<span class="font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">groups</span>
+<span class="font-medium">Team</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">analytics</span>
+<span class="font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10 border-2 border-white dark:border-gray-700 shadow-sm" data-alt="User profile picture of current logged in user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbTtt3CKzJW07Bul9arTi4VMEirnKN8ZXpiVhLb22dVs-6WJyzkqq0yYon3InmrAIX3Eajx_lR6Fb7fxk3JvokPBo9Q6VYYdMn4k8Qx13SqulDmLoPOzLORp-2lF8G2W_MouOrgqQMl3nktWWoXmjYi0LQ1UA8rd1Ylu8sU34i7BY1ru9JA8LeXI-S_impAytg3mAFxZEUjlbAdAtWfTEViMRPcLXvoZ9CizlkyiO-tcfQPatHcjQdF7nXtRzf1wER8DNRFKs5iZI");'></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold">Admin User</span>
+<span class="text-xs text-text-muted">View Profile</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full relative overflow-y-auto">
+<!-- Top Bar / Header -->
+<header class="bg-card-light dark:bg-card-dark/50 sticky top-0 z-20 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-8 py-5 flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-extrabold text-text-main dark:text-white tracking-tight">Website Redesign Phase 2</h1>
+<span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold uppercase rounded-full tracking-wider border border-green-200 dark:border-green-800">Active</span>
+</div>
+<p class="text-text-muted text-sm font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">fingerprint</span>
+                    Code: #WR-2024
+                </p>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+                    Export
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">share</span>
+                    Share
+                </button>
+<button class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg shadow-lg shadow-primary/20 text-sm font-bold flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New Task
+                </button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-6 md:p-8 w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Top Left: Project Info (4 Columns) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Info Card -->
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 h-full flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-lg font-bold text-text-main dark:text-white">Project Details</h2>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- PM Profile -->
+<div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100 dark:border-gray-700">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl h-16 w-16 shadow-md" data-alt="Profile picture of Sarah Jenkins, Project Manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtqWvoWx-ECbbaGNzCTcRd4c17rxJHH8R049opn5_Ot4p1uG-pEsVuFHx5dIQE9KpjlB1zG7tNaUmoJesIhJdrUbF_Q-DxxoNdnNaSWAvEuHCG3wA4zcl0huWKI_IujE3ESoXI9E_L6qo4mVwWelie8DX-KQXhVD3CgBopTC-X2rLI_azyP1_6INRHhVku3nNPnuoxKWGu_lFuLuosk9q5N84sUfmw5aMpJbcnF2j-_8lGPC8xSBefCxPPlWN1GACGQatSqZI4kHc");'>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white text-[10px] p-1 rounded-full border-2 border-white dark:border-gray-800">
+<span class="material-symbols-outlined text-[12px] block">verified</span>
+</div>
+</div>
+<div>
+<p class="text-lg font-bold text-text-main dark:text-white leading-tight">Sarah Jenkins</p>
+<p class="text-text-muted text-sm font-medium">Lead Project Manager</p>
+</div>
+</div>
+<!-- Timeline Stats -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl">
+<p class="text-text-muted text-xs uppercase tracking-wider font-semibold mb-1">Deadline</p>
+<p class="text-text-main dark:text-white font-bold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+                                Oct 24, 2024
+                            </p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl">
+<p class="text-text-muted text-xs uppercase tracking-wider font-semibold mb-1">Remaining</p>
+<p class="text-text-main dark:text-white font-bold text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-orange-400">timer</span>
+                                5 Days
+                            </p>
+</div>
+</div>
+<!-- Team -->
+<div class="mt-auto">
+<p class="text-text-muted text-xs uppercase tracking-wider font-semibold mb-3">Core Team</p>
+<div class="flex items-center -space-x-3 hover:space-x-1 transition-all duration-300">
+<div class="bg-center bg-no-repeat bg-cover border-2 border-white dark:border-card-dark rounded-full h-10 w-10 shadow-sm relative z-30 hover:z-40 hover:scale-110 transition-transform" data-alt="Team member 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAJIAmldOotaIp9T9cIejAtvVTa33jMk76TcRzB-7GgaGe1zJAuJseEMApJGks8LlKpGhyuDg_sq_RQ_wFGf2w7iK7MynqQx0I-cwPzioUXh6pS18T5jJgsJOY_z7GXkdJjr4aRbcNrbFGse5y73XwamnTUuUFIvU64-0ZR8ZPYg6pnNzId-WoCnVhX8MUL41Y2zZ-zCr5YlCcrjlFW2vOAy_npAEBLtY-pLvh4bGGxWE3NRc9M9VuvfHLvWosNKDveOnQn6MY7Yk");'></div>
+<div class="bg-center bg-no-repeat bg-cover border-2 border-white dark:border-card-dark rounded-full h-10 w-10 shadow-sm relative z-20 hover:z-40 hover:scale-110 transition-transform" data-alt="Team member 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBF30pprIjTlwrse0xxi0ITo4auxe3kC_DUG7EXJueRFEwF8QiNoFc8jHSi8iQxGtRsEMg8BF-T-10vQ6s59fILUD2OwObB2ha8UpBsvXpMCIoD17y0N9cAl-PL4L-vCSCVrULJR9UPTK2hmDteCVZbiPZhLILyHki0C9P1vJBJTewOlR4r30212UwKeyaOZ_7GU_PxyoqK14LNnZZPlaZ-ZedHRkYifNK1t2bhz2U7KxbL818sCYossR2WVHObgsKV6oVyCSksZQ");'></div>
+<div class="bg-center bg-no-repeat bg-cover border-2 border-white dark:border-card-dark rounded-full h-10 w-10 shadow-sm relative z-10 hover:z-40 hover:scale-110 transition-transform" data-alt="Team member 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdpgiDZMUSqeTfV6aumhT7Ni-zyLPNbFeN0sl9totQaLjJbrC0glTJEIMcur18PI679-sUIMMrpZW7psddbiALoZEetnpaOrpoXAkTArhAzs0eaM0GoOOTygXMi4xJareSQPpmr0NHlzJCR1PVPLGl7Ykdz3JZVeLx1gc4H_8blFNxD-nJOLMYK__PQ033QZD44-uH0fLiDwKI0jMZ2gs4rMB_6KQ56LVRHuhMpat5D25PzabERxiHYHEtWP0aIaAY0qnLMs0BybQ");'></div>
+<div class="h-10 w-10 rounded-full border-2 border-white dark:border-card-dark bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-xs font-bold text-text-muted hover:bg-gray-200 cursor-pointer z-0">
+                                +4
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Right: Report Form (8 Columns) -->
+<div class="lg:col-span-8">
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-800 h-full">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-lg font-bold text-text-main dark:text-white">Weekly Update Report</h2>
+<p class="text-text-muted text-sm mt-1">Submit your progress for the week ending Oct 19.</p>
+</div>
+<div class="h-10 w-10 rounded-full bg-pastel-lavender/30 flex items-center justify-center text-pastel-lavender">
+<span class="material-symbols-outlined text-purple-400">edit_document</span>
+</div>
+</div>
+<form class="flex flex-col gap-5 h-[calc(100%-80px)]" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-300">Subject</label>
+<input class="w-full bg-gray-50 dark:bg-gray-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 text-text-main dark:text-white placeholder-gray-400 transition-shadow" placeholder="e.g. Design System Phase 1 Complete" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-300">Milestone Linked</label>
+<select class="w-full bg-gray-50 dark:bg-gray-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 text-text-main dark:text-white transition-shadow">
+<option>Phase 2 Deliverables</option>
+<option>Backend Integration</option>
+<option>User Testing</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<label class="text-sm font-semibold text-text-main dark:text-gray-300">Description</label>
+<textarea class="w-full h-full min-h-[120px] bg-gray-50 dark:bg-gray-800 border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 text-text-main dark:text-white placeholder-gray-400 resize-none transition-shadow" placeholder="Summarize key achievements, blockers, and next steps..."></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-auto">
+<div class="md:col-span-2 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50/50 dark:bg-gray-800/30 flex flex-col items-center justify-center py-4 px-4 text-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary mb-1">cloud_upload</span>
+<p class="text-xs text-text-muted"><span class="font-bold text-primary">Click to upload</span> or drag and drop</p>
+<p class="text-[10px] text-gray-400">SVG, PNG, JPG or PDF (max. 800x400px)</p>
+</div>
+<div class="flex items-end">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/25 transition-all active:scale-95 flex justify-center items-center gap-2" type="submit">
+                                    Submit Update
+                                    <span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Bottom Row: 3 Charts (3x4 Columns) -->
+<!-- Chart 1: Work Progress -->
+<div class="col-span-1 lg:col-span-4 bg-card-light dark:bg-card-dark rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-bold text-text-main dark:text-white">Work Progress</h3>
+<p class="text-xs text-text-muted">Task completion rate</p>
+</div>
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">On Track</span>
+</div>
+<div class="flex items-center justify-center py-4 relative">
+<!-- Donut Chart Implementation with CSS Conic Gradient -->
+<div class="relative w-48 h-48 rounded-full flex items-center justify-center shadow-inner" style="background: conic-gradient(#66ccb2 0% 75%, #f1f5f9 75% 100%);">
+<!-- Dark mode override via classes isn't standard for inline styles, handling with JS usually, but here we can rely on a solid inner circle -->
+<div class="absolute inset-0 rounded-full opacity-10 bg-black dark:opacity-20 pointer-events-none"></div>
+<div class="bg-card-light dark:bg-card-dark w-32 h-32 rounded-full flex flex-col items-center justify-center shadow-md z-10">
+<span class="text-3xl font-extrabold text-text-main dark:text-white">75%</span>
+<span class="text-xs text-text-muted font-medium">Completed</span>
+</div>
+</div>
+</div>
+<div class="flex justify-center gap-6 mt-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs text-text-muted font-medium">Done (32)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-gray-200 dark:bg-gray-600"></div>
+<span class="text-xs text-text-muted font-medium">Pending (12)</span>
+</div>
+</div>
+</div>
+<!-- Chart 2: Budget vs Actual -->
+<div class="col-span-1 lg:col-span-4 bg-card-light dark:bg-card-dark rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-bold text-text-main dark:text-white">Budget vs. Actual</h3>
+<p class="text-xs text-text-muted">Financial consumption</p>
+</div>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">info</span>
+</button>
+</div>
+<div class="h-48 w-full flex items-end justify-between gap-2 px-2 pb-2">
+<!-- Bar Group 1: Design -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32">
+<div class="w-3 bg-pastel-lavender/80 rounded-t-sm h-[80%] group-hover:bg-pastel-lavender transition-all relative"></div>
+<div class="w-3 bg-pastel-blue/80 rounded-t-sm h-[60%] group-hover:bg-pastel-blue transition-all"></div>
+</div>
+<span class="text-[10px] font-bold text-text-muted uppercase">Design</span>
+</div>
+<!-- Bar Group 2: Dev -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32">
+<div class="w-3 bg-pastel-lavender/80 rounded-t-sm h-[90%] group-hover:bg-pastel-lavender transition-all"></div>
+<div class="w-3 bg-pastel-blue/80 rounded-t-sm h-[85%] group-hover:bg-pastel-blue transition-all"></div>
+</div>
+<span class="text-[10px] font-bold text-text-muted uppercase">Dev</span>
+</div>
+<!-- Bar Group 3: QA -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32">
+<div class="w-3 bg-pastel-lavender/80 rounded-t-sm h-[40%] group-hover:bg-pastel-lavender transition-all"></div>
+<div class="w-3 bg-pastel-blue/80 rounded-t-sm h-[20%] group-hover:bg-pastel-blue transition-all"></div>
+</div>
+<span class="text-[10px] font-bold text-text-muted uppercase">QA</span>
+</div>
+<!-- Bar Group 4: Mktg -->
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full flex justify-center items-end gap-1 h-32">
+<div class="w-3 bg-pastel-lavender/80 rounded-t-sm h-[60%] group-hover:bg-pastel-lavender transition-all"></div>
+<div class="w-3 bg-pastel-blue/80 rounded-t-sm h-[30%] group-hover:bg-pastel-blue transition-all"></div>
+</div>
+<span class="text-[10px] font-bold text-text-muted uppercase">Mktg</span>
+</div>
+</div>
+<div class="flex justify-center gap-6 mt-6 pt-4 border-t border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded bg-pastel-lavender"></div>
+<span class="text-xs text-text-muted font-medium">Budget ($50k)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded bg-pastel-blue"></div>
+<span class="text-xs text-text-muted font-medium">Actual ($32k)</span>
+</div>
+</div>
+</div>
+<!-- Chart 3: Risk Index -->
+<div class="col-span-1 lg:col-span-4 bg-card-light dark:bg-card-dark rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="font-bold text-text-main dark:text-white">Risk Index</h3>
+<p class="text-xs text-text-muted">Weekly assessment trend</p>
+</div>
+<span class="flex items-center text-green-500 text-xs font-bold gap-1 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                        -5%
+                    </span>
+</div>
+<div class="h-48 w-full relative pt-4">
+<!-- SVG Line Chart -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 50">
+<!-- Grid lines -->
+<line class="text-gray-100 dark:text-gray-800" stroke="currentColor" stroke-width="0.5" x1="0" x2="100" y1="0" y2="0"></line>
+<line class="text-gray-100 dark:text-gray-800" stroke="currentColor" stroke-width="0.5" x1="0" x2="100" y1="25" y2="25"></line>
+<line class="text-gray-100 dark:text-gray-800" stroke="currentColor" stroke-width="0.5" x1="0" x2="100" y1="50" y2="50"></line>
+<!-- Gradient Area under curve -->
+<defs>
+<lineargradient id="riskGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#F2C6DE" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#F2C6DE" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,40 C20,35 40,45 60,20 S80,10 100,25 V50 H0 Z" fill="url(#riskGradient)"></path>
+<!-- The Line -->
+<path d="M0,40 C20,35 40,45 60,20 S80,10 100,25" fill="none" stroke="#F2C6DE" stroke-linecap="round" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+<!-- Points -->
+<circle class="fill-white stroke-pastel-pink stroke-2" cx="20" cy="38" r="1.5"></circle>
+<circle class="fill-white stroke-pastel-pink stroke-2" cx="60" cy="20" r="1.5"></circle>
+<circle class="fill-white stroke-pastel-pink stroke-2" cx="100" cy="25" r="1.5"></circle>
+</svg>
+<!-- Floating tooltip-like overlay -->
+<div class="absolute top-10 left-[60%] -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded shadow-lg pointer-events-none opacity-80">
+                        Peak Risk
+                    </div>
+</div>
+<div class="flex justify-between mt-6 pt-4 border-t border-gray-100 dark:border-gray-800">
+<span class="text-xs text-text-muted">Week 1</span>
+<span class="text-xs text-text-muted">Week 2</span>
+<span class="text-xs text-text-muted">Week 3</span>
+<span class="text-xs text-text-muted">Week 4</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
